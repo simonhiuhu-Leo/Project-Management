@@ -1,0 +1,32 @@
+[
+    {
+        "username": "Simon",
+        "projects": [
+            {
+                "name": "Portfolio",
+                "tasks": [
+                    {
+                        "name": "BuildWebsite",
+                        "completed": false
+                    }
+                ]
+            },
+            {
+                "name": "Portfolio",
+                "tasks": []
+            },
+            {
+                "name": "Portfolio",
+                "tasks": []
+            }
+        ]
+    },
+    {
+        "username": "HIUHU",
+        "projects": []
+    },
+    {
+        "username": "Alooo",
+        "projects": []
+    }
+]
