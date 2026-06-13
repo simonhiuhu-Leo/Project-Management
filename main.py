@@ -1,8 +1,35 @@
 import argparse
-from tabulate import tabulate
 
 from models import User, Project, Task
 from utils.storage import load_data, save_data
+
+try:
+    from tabulate import tabulate
+except ImportError:
+    tabulate = None
+
+
+def print_table(headers, rows):
+    if tabulate:
+        print(tabulate(rows, headers=headers, tablefmt="grid"))
+        return
+
+    if not rows:
+        print("No rows to display.")
+        return
+
+    widths = [len(header) for header in headers]
+    for row in rows:
+        for index, cell in enumerate(row):
+            widths[index] = max(widths[index], len(str(cell)))
+
+    header_line = " | ".join(header.ljust(widths[i]) for i, header in enumerate(headers))
+    separator = "-+-".join("-" * widths[i] for i in range(len(headers)))
+
+    print(header_line)
+    print(separator)
+    for row in rows:
+        print(" | ".join(str(cell).ljust(widths[i]) for i, cell in enumerate(row)))
 
 
 def create_user(username):
